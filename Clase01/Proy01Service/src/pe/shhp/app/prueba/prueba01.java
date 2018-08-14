@@ -21,7 +21,7 @@ public class prueba01 {
         int suma = mateService.sumar(n1, n2);
         int diferencia = mateService.restar(n1, n2);
         int cociente = mateService.dividir(n1, n2);
-        int producto = mateService.multplicar(n1, n2);
+        int producto = mateService.multiplicar(n1, n2);
         //Escribe
         System.out.println("Número 1: "+n1);
         System.out.println("Número 2: "+n2);

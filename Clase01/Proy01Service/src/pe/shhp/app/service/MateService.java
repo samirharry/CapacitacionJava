@@ -19,7 +19,7 @@ public class MateService {
     public int  dividir(int a,int b){
         return (a/b);
     }
-    public int multplicar(int a,int b){
+    public int multiplicar(int a,int b){
         return (a*b);
     }
 }
