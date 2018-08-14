@@ -21,7 +21,7 @@ import pe.shhp.app.service.MateService;
  *
  * @author Samir Harry
  */
-@WebServlet(name = "AppController", urlPatterns = {"/AppSumar", "/AppRestar", "/AppMultplicar", "/AppDividir"})
+@WebServlet(name = "AppController", urlPatterns = {"/AppSumar", "/AppRestar", "/AppMultiplicar", "/AppDividir"})
 public class AppController extends HttpServlet {
     @Override
     
