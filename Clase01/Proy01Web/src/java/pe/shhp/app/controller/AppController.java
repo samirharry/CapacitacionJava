@@ -7,6 +7,7 @@ package pe.shhp.app.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -34,7 +35,7 @@ public class AppController extends HttpServlet {
             case "/AppRestar":
                 appRestar(request,response);
                 break;
-            case "/AppMultiplicar":
+            case "/AppMulti":
                 appMultiplicar(request,response);
                 break;
             case "/AppDividir":
@@ -46,35 +47,68 @@ public class AppController extends HttpServlet {
   
     public void appSumar(ServletRequest request, ServletResponse response) throws ServletException, IOException {
         //Datos
-        int n1= Integer.parseInt(request.getParameter("num1").toString());
-        int n2= Integer.parseInt(request.getParameter("num2").toString());
+        int n1= Integer.parseInt(request.getParameter("num1"));
+        int n2= Integer.parseInt(request.getParameter("num2"));
         //Procesa
         MateService mateService = new MateService();
-        int suma = mateService.sumar(n1,n2);
+        int resultadoSuma = mateService.sumar(n1,n2);
         //Forward
-        
+        request.setAttribute("n1", n1);
+        request.setAttribute("n2", n2);
+        request.setAttribute("resultado", resultadoSuma);
+        RequestDispatcher dispatcher;
+        dispatcher = request.getRequestDispatcher("respuesta.jsp");
+        dispatcher.forward(request, response);
         
     }
 
  
     public void appRestar(ServletRequest request, ServletResponse response) throws ServletException, IOException {
-        super.service(req, res); //To change body of generated methods, choose Tools | Templates.
+        //Datos
+        int n1= Integer.parseInt(request.getParameter("num1"));
+        int n2= Integer.parseInt(request.getParameter("num2"));
+        //Procesa
+        MateService mateService = new MateService();
+        int resultadoResta = mateService.restar(n1,n2);
+        //Forward
+        request.setAttribute("n1", n1);
+        request.setAttribute("n2", n2);
+        request.setAttribute("resultado", resultadoResta);
+        RequestDispatcher dispatcher;
+        dispatcher = request.getRequestDispatcher("respuesta.jsp");
+        dispatcher.forward(request, response);
     }
 
 
     public void appMultiplicar(ServletRequest request, ServletResponse response) throws ServletException, IOException {
-        super.service(req, res); //To change body of generated methods, choose Tools | Templates.
+        //Datos
+        int n1= Integer.parseInt(request.getParameter("num1"));
+        int n2= Integer.parseInt(request.getParameter("num2"));
+        //Procesa
+        MateService mateService = new MateService();
+        int resultadoMultiplicacion = mateService.multiplicar(n1,n2);
+        //Forward
+        request.setAttribute("n1", n1);
+        request.setAttribute("n2", n2);
+        request.setAttribute("resultado", resultadoMultiplicacion);
+        RequestDispatcher dispatcher;
+        dispatcher = request.getRequestDispatcher("respuesta.jsp");
+        dispatcher.forward(request, response);
     }
 
     public void appDividir(ServletRequest request, ServletResponse response) throws ServletException, IOException {
-        super.service(req, res); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    
-    
-    
-    
-    
-    
+        //Datos
+        int n1= Integer.parseInt(request.getParameter("num1"));
+        int n2= Integer.parseInt(request.getParameter("num2"));
+        //Procesa
+        MateService mateService = new MateService();
+        int resultadoDivision = mateService.dividir(n1,n2);
+        //Forward
+        request.setAttribute("n1", n1);
+        request.setAttribute("n2", n2);
+        request.setAttribute("resultado", resultadoDivision);
+        RequestDispatcher dispatcher;
+        dispatcher = request.getRequestDispatcher("respuesta.jsp");
+        dispatcher.forward(request, response);
+    } 
 }
